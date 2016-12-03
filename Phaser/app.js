@@ -53,8 +53,38 @@ function create() {
     enemy1.body.gravity.y = 500;
     enemy1.body.collideWorldBounds = true;
 
+      enemy2 = game.add.sprite(10, 20, 'baddie')
+    // Enemy animations using spritesheet and applies game physics
+    enemy2.animations.add('left', [0, 1], 10, true);
+    enemy2.animations.add('right', [2, 3], 10, true);
+    game.physics.arcade.enable(enemy2);
+    // Enemy physics properties.
+    enemy2.body.bounce.y = 0.2;
+    enemy2.body.gravity.y = 500;
+    enemy2.body.collideWorldBounds = true; 
+
+      enemy3 = game.add.sprite(200, 20, 'baddie')
+    // Enemy animations using spritesheet and applies game physics
+    enemy3.animations.add('left', [0, 1], 10, true);
+    enemy3.animations.add('right', [2, 3], 10, true);
+    game.physics.arcade.enable(enemy3);
+    // Enemy physics properties.
+    enemy3.body.bounce.y = 0.2;
+    enemy3.body.gravity.y = 500;
+    enemy3.body.collideWorldBounds = true; 
+
   // Creating keyboard entry
   cursors = game.input.keyboard.createCursorKeys();
+
+  // Twinkle creating stars...
+  stars=game.add.physicsGroup();
+  stars.enableBody = true;
+  //loop to crate stars
+  for (var i = 0; i < 12; i++) {
+var star = stars.create(i * 70, 0, 'star');
+star.body.gravity.y = 200;
+star.body.bounce.y = Math.random() * 0.9;
+  }
 
 
 
@@ -64,6 +94,8 @@ function update() {
  //Make the player/enemy1 sprite collide with the platform
  game.physics.arcade.collide(player,platforms); 
  game.physics.arcade.collide(enemy1,platforms);
+  game.physics.arcade.collide(enemy2,platforms); 
+  game.physics.arcade.collide(enemy3,platforms);
  //Player speed reset to 0
  player.body.velocity.x = 0;
  //Keyboard events
@@ -87,9 +119,27 @@ function update() {
   //enenmy A1
   if (enemy1.x > 749) {
     enemy1.animations.play('left');
-    enemy1.body.velocity.x = -128;  
+    enemy1.body.velocity.x = -120;  
   } else if (enemy1.x < 405) {
     enemy1.animations.play('right');
-    enemy1.body.velocity.x = 120;
+    enemy1.body.velocity.x = 150;
+  }
+
+    //enenmy A1
+  if (enemy2.x > 200) {
+    enemy2.animations.play('left');
+    enemy2.body.velocity.x = -120;  
+  } else if (enemy2.x < 20) {
+    enemy2.animations.play('right');
+    enemy2.body.velocity.x = 90;
+  }
+
+    //enenmy A1
+  if (enemy3.x > 759) {
+    enemy3.animations.play('left');
+    enemy3.body.velocity.x = -120;  
+  } else if (enemy3.x < 405) {
+    enemy3.animations.play('right');
+    enemy3.body.velocity.x = 10000000000;
   }
 }
