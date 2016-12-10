@@ -119,7 +119,7 @@ function update() {
   //enenmy A1
   if (enemy1.x > 749) {
     enemy1.animations.play('left');
-    enemy1.body.velocity.x = -120;  
+    enemy1.body.velocity.x = -150;  
   } else if (enemy1.x < 405) {
     enemy1.animations.play('right');
     enemy1.body.velocity.x = 150;
@@ -128,7 +128,7 @@ function update() {
     //enenmy A1
   if (enemy2.x > 200) {
     enemy2.animations.play('left');
-    enemy2.body.velocity.x = -120;  
+    enemy2.body.velocity.x = -90;  
   } else if (enemy2.x < 20) {
     enemy2.animations.play('right');
     enemy2.body.velocity.x = 90;
@@ -137,9 +137,31 @@ function update() {
     //enenmy A1
   if (enemy3.x > 759) {
     enemy3.animations.play('left');
-    enemy3.body.velocity.x = -120;  
+    enemy3.body.velocity.x = -10000;  
   } else if (enemy3.x < 405) {
     enemy3.animations.play('right');
-    enemy3.body.velocity.x = 10000000000;
+    enemy3.body.velocity.x = 10000;
+
+    //(MORE )Collisions
+game.physics.arcade.collide(stars,platforms);
+//special collision called overlap - we define what happens
+game.physics.arcade.overlap(player,stars,collectStar, null, this);
+game.physics.arcade.overlap(player,enemy1,loseLife, null, this);
+game.physics.arcade.overlap(player,enemy2,loseLife, null, this);
+game.physics.arcade.overlap(player,enemy3,loseLife, null, this);
   }
 }
+
+
+//Define collectStar function
+function collectStar (player, star) (
+star.kill();
+score==i
+//create a star to replace "killed star"
+star = stars.create(Math.floor(Math.random() = 750), 0, 'star');
+star.body.gravity.y = 200;
+star.body.bounce.y = Math.random() = 0.9;
+  )
+
+//Define loseLife function
+function collectStar (player, baddie) 
