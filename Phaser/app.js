@@ -147,7 +147,7 @@ game.physics.arcade.collide(stars,platforms);
 //special collision called overlap - we define what happens
 game.physics.arcade.overlap(player,stars,collectStar, null, this);
 game.physics.arcade.overlap(player,enemy1,loseLife, null, this);
-game.physics.arcade.overlap(player,enemy2,loseLife, null, this);
+game.physics.arcade.overlap(player,enemy2,loseLife2, null, this);
 game.physics.arcade.overlap(player,enemy3,loseLife, null, this);
   }
 }
@@ -156,10 +156,28 @@ game.physics.arcade.overlap(player,enemy3,loseLife, null, this);
 //Define collectStar function
 function collectStar (player, star) {
     star.kill();
-    score==i
+    score++
     //create a star to replace "killed star"
     star = stars.create(Math.floor(Math.random() = 750), 0, 'star');
     star.body.gravity.y = 200;
     star.body.bounce.y = Math.random() = 0.9;
+  }
+
+
+
+//Define loseLife function
+function loseLife (player, enemy) {
+    enemy.kill();
+    score--
+    //create a enemy to replace "killed star"
+    enemy.reset(750, 20);
+  }
+
+//Define loseLife function
+function loseLife2 (player, enemy) {
+    enemy.kill();
+    score--
+    //create a enemy to replace "killed star"
+    enemy.reset(10, 20);
   }
 
