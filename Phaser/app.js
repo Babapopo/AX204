@@ -154,14 +154,12 @@ game.physics.arcade.overlap(player,enemy3,loseLife, null, this);
 
 
 //Define collectStar function
-function collectStar (player, star) (
-star.kill();
-score==i
-//create a star to replace "killed star"
-star = stars.create(Math.floor(Math.random() = 750), 0, 'star');
-star.body.gravity.y = 200;
-star.body.bounce.y = Math.random() = 0.9;
-  )
+function collectStar (player, star) {
+    star.kill();
+    score==i
+    //create a star to replace "killed star"
+    star = stars.create(Math.floor(Math.random() = 750), 0, 'star');
+    star.body.gravity.y = 200;
+    star.body.bounce.y = Math.random() = 0.9;
+  }
 
-//Define loseLife function
-function collectStar (player, baddie) 
